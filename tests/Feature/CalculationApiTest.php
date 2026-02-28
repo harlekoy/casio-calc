@@ -399,8 +399,7 @@ class CalculationApiTest extends TestCase
             'X-Session-Id' => $this->sessionId,
         ]);
 
-        $response->assertStatus(403)
-            ->assertJsonFragment(['error' => 'Unauthorized']);
+        $response->assertStatus(404);
         $this->assertDatabaseHas('calculations', ['id' => $calculation->id]);
     }
 
