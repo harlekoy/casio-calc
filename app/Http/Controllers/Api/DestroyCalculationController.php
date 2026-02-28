@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 class DestroyCalculationController extends Controller
 {
-    public function __invoke(string $calculation): JsonResponse
+    public function __invoke(int $calculation): JsonResponse
     {
         Calculation::findOrFail($calculation)->delete();
 
