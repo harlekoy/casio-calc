@@ -10,9 +10,9 @@ class CalculationApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    private string $sessionId = 'test-session-id-1';
+    private string $sessionId = '00000000-0000-4000-a000-000000000001';
 
-    private string $otherSessionId = 'test-session-id-2';
+    private string $otherSessionId = '00000000-0000-4000-a000-000000000002';
 
     // ─── Store Calculation (POST /api/calculations) ───
 

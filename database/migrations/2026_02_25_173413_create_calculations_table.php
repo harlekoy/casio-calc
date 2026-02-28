@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('calculations', function (Blueprint $table) {
-            $table->id();
-            $table->string('session_id', 36)->index();
+            $table->uuid('id')->primary();
+            $table->uuid('session_id')->index();
             $table->text('expression');
             $table->string('result');
             $table->timestamps();

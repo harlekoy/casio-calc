@@ -6,13 +6,16 @@ use App\Models\Calculation;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnsureSessionId
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->header('X-Session-Id')) {
+        $sessionId = $request->header('X-Session-Id');
+
+        if (! $sessionId || ! Str::isUuid($sessionId)) {
             return response()->json(['error' => 'Session ID required'], 400);
         }
 
