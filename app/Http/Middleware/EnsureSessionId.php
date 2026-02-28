@@ -9,8 +9,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Validate the X-Session-Id header and apply a global scope
+ * to filter Calculation queries by the current session.
+ */
 class EnsureSessionId
 {
+    /**
+     * Handle an incoming request.
+     */
     public function handle(Request $request, Closure $next): Response
     {
         $sessionId = $request->header('X-Session-Id');
