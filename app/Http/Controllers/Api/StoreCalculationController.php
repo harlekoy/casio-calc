@@ -32,21 +32,9 @@ class StoreCalculationController extends Controller
     {
         $calculation = Calculation::create([
             'expression' => $request->input('expression'),
-            'result' => $this->formatResult($request->evaluatedResult()),
+            'result' => $request->evaluatedResult(),
         ]);
 
         return CalculationResource::make($calculation);
-    }
-
-    /**
-     * Format the numeric result as a clean string.
-     */
-    private function formatResult(float $result): string
-    {
-        if (floor($result) == $result && abs($result) < PHP_INT_MAX) {
-            return (string) (int) $result;
-        }
-
-        return (string) round($result, 10);
     }
 }

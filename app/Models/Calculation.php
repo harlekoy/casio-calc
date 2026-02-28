@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\MathResult;
 use App\Traits\BelongsToSession;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,9 +23,26 @@ class Calculation extends Model
      *
      * @var array<int, string>
      */
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'session_id',
         'expression',
         'result',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'result' => MathResult::class,
+        ];
+    }
 }
