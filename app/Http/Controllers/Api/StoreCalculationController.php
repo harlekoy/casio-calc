@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Calculation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use MathParser\StdMathParser;
 use MathParser\Interpreting\Evaluator;
+use MathParser\StdMathParser;
 
 class StoreCalculationController extends Controller
 {
@@ -19,15 +19,15 @@ class StoreCalculationController extends Controller
 
         $sessionId = $request->header('X-Session-Id');
 
-        if (!$sessionId) {
+        if (! $sessionId) {
             return response()->json(['error' => 'Session ID required'], 400);
         }
 
         $expression = $request->input('expression');
 
         try {
-            $parser = new StdMathParser();
-            $evaluator = new Evaluator();
+            $parser = new StdMathParser;
+            $evaluator = new Evaluator;
 
             $ast = $parser->parse($expression);
             $result = $ast->accept($evaluator);

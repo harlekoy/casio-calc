@@ -13,7 +13,7 @@ class DestroyAllCalculationsController extends Controller
     {
         $sessionId = $request->header('X-Session-Id');
 
-        if (!$sessionId) {
+        if (! $sessionId) {
             return response()->json(['error' => 'Session ID required'], 400);
         }
 
