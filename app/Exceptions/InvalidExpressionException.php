@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 /**
  * Thrown when a math expression cannot be parsed or evaluated.
@@ -15,6 +16,6 @@ class InvalidExpressionException extends Exception
      */
     public function render(): JsonResponse
     {
-        return response()->json(['error' => 'Invalid expression'], 422);
+        return response()->json(['error' => 'Invalid expression'], Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 }

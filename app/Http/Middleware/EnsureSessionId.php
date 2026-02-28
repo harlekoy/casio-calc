@@ -23,7 +23,7 @@ class EnsureSessionId
         $sessionId = $request->header('X-Session-Id');
 
         if (! $sessionId || ! Str::isUuid($sessionId)) {
-            return response()->json(['error' => 'Session ID required'], 400);
+            return response()->json(['error' => 'Session ID required'], Response::HTTP_BAD_REQUEST);
         }
 
         Calculation::addGlobalScope('session', function (Builder $query) use ($request) {
