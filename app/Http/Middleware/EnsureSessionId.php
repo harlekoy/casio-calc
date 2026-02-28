@@ -2,16 +2,14 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Calculation;
 use Closure;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Validate the X-Session-Id header and apply a global scope
- * to filter Calculation queries by the current session.
+ * Validate the X-Session-Id header and register a Request macro
+ * so the BelongsToSession trait can scope queries automatically.
  */
 class EnsureSessionId
 {
@@ -26,9 +24,7 @@ class EnsureSessionId
             return response()->json(['error' => 'Session ID required'], Response::HTTP_BAD_REQUEST);
         }
 
-        Calculation::addGlobalScope('session', function (Builder $query) use ($request) {
-            $query->where('session_id', $request->header('X-Session-Id'));
-        });
+        Request::macro('sessionId', fn () => $sessionId);
 
         return $next($request);
     }

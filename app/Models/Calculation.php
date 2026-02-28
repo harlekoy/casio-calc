@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToSession;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,6 +15,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Calculation extends Model
 {
+    use BelongsToSession;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'session_id',
         'expression',

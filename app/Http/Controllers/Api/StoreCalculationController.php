@@ -53,7 +53,6 @@ class StoreCalculationController extends Controller
         }
 
         $calculation = Calculation::create([
-            'session_id' => $request->header('X-Session-Id'),
             'expression' => $expression,
             'result' => $this->formatResult($result),
         ]);
