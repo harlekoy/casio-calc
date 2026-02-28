@@ -17,6 +17,9 @@ trait BelongsToSession
     {
         static::addGlobalScope('current_session', function (Builder $builder) {
             if (! Request::hasMacro('sessionId')) {
+                $table = (new static)->getTable();
+                $builder->where("{$table}.session_id", '');
+
                 return;
             }
 
