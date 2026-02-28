@@ -268,7 +268,7 @@ class CalculationApiTest extends TestCase
         ], ['X-Session-Id' => $this->sessionId]);
 
         $response->assertStatus(422)
-            ->assertJsonFragment(['error' => 'Invalid expression']);
+            ->assertJsonValidationErrors('expression');
     }
 
     public function test_rejects_unbalanced_parentheses(): void
@@ -278,7 +278,7 @@ class CalculationApiTest extends TestCase
         ], ['X-Session-Id' => $this->sessionId]);
 
         $response->assertStatus(422)
-            ->assertJsonFragment(['error' => 'Invalid expression']);
+            ->assertJsonValidationErrors('expression');
     }
 
     public function test_rejects_division_by_zero(): void

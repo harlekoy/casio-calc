@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Exceptions\InvalidExpressionException;
-use App\Exceptions\MathErrorException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCalculationRequest;
 use App\Http\Resources\CalculationResource;
 use App\Models\Calculation;
-use Exception;
-use MathParser\Interpreting\Evaluator;
-use MathParser\StdMathParser;
 
 class StoreCalculationController extends Controller
 {
@@ -31,30 +26,13 @@ class StoreCalculationController extends Controller
      * @response 201 {"data":{"id":1,"session_id":"550e8400-e29b-41d4-a716-446655440000","expression":"sqrt(144)+5","result":"17","created_at":"2026-03-01T12:00:00.000000Z","updated_at":"2026-03-01T12:00:00.000000Z"}}
      * @response 400 scenario="Missing session ID" {"error":"Session ID required"}
      * @response 403 scenario="Unauthorized" {"message":"This action is unauthorized."}
-     * @response 422 scenario="Invalid expression" {"error":"Invalid expression"}
-     * @response 422 scenario="Math error" {"error":"Math error"}
+     * @response 422 scenario="Validation error" {"message":"Invalid expression","errors":{"expression":["Invalid expression"]}}
      */
     public function __invoke(StoreCalculationRequest $request): CalculationResource
     {
-        $expression = $request->input('expression');
-
-        try {
-            $parser = new StdMathParser;
-            $evaluator = new Evaluator;
-
-            $ast = $parser->parse($expression);
-            $result = $ast->accept($evaluator);
-        } catch (Exception $e) {
-            throw new InvalidExpressionException;
-        }
-
-        if (is_infinite($result) || is_nan($result)) {
-            throw new MathErrorException;
-        }
-
         $calculation = Calculation::create([
-            'expression' => $expression,
-            'result' => $this->formatResult($result),
+            'expression' => $request->input('expression'),
+            'result' => $this->formatResult($request->evaluatedResult()),
         ]);
 
         return CalculationResource::make($calculation);

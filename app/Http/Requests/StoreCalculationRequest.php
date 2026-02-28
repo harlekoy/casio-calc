@@ -2,10 +2,16 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidExpression;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCalculationRequest extends FormRequest
 {
+    /**
+     * The expression validation rule instance.
+     */
+    private ValidExpression $expressionRule;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -21,8 +27,18 @@ class StoreCalculationRequest extends FormRequest
      */
     public function rules(): array
     {
+        $this->expressionRule = new ValidExpression;
+
         return [
-            'expression' => 'required|string|max:500',
+            'expression' => ['required', 'string', 'max:500', $this->expressionRule],
         ];
+    }
+
+    /**
+     * Get the evaluated result from the expression rule.
+     */
+    public function evaluatedResult(): float
+    {
+        return $this->expressionRule->getResult();
     }
 }
