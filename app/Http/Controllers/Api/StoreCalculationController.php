@@ -17,12 +17,6 @@ class StoreCalculationController extends Controller
             'expression' => 'required|string|max:500',
         ]);
 
-        $sessionId = $request->header('X-Session-Id');
-
-        if (! $sessionId) {
-            return response()->json(['error' => 'Session ID required'], 400);
-        }
-
         $expression = $request->input('expression');
 
         try {
@@ -39,7 +33,7 @@ class StoreCalculationController extends Controller
             $result = $this->formatResult($result);
 
             $calculation = Calculation::create([
-                'session_id' => $sessionId,
+                'session_id' => $request->header('X-Session-Id'),
                 'expression' => $expression,
                 'result' => $result,
             ]);
