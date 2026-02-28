@@ -18,7 +18,7 @@ class CalculationResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->uuid,
             'session_id' => $this->session_id,
             'expression' => $this->expression,
             'result' => $this->result,

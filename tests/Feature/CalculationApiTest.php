@@ -383,7 +383,7 @@ class CalculationApiTest extends TestCase
     {
         $calculation = Calculation::create(['session_id' => $this->sessionId, 'expression' => '1+1', 'result' => '2']);
 
-        $response = $this->deleteJson("/api/calculations/{$calculation->id}", [], [
+        $response = $this->deleteJson("/api/calculations/{$calculation->uuid}", [], [
             'X-Session-Id' => $this->sessionId,
         ]);
 
@@ -395,7 +395,7 @@ class CalculationApiTest extends TestCase
     {
         $calculation = Calculation::create(['session_id' => $this->otherSessionId, 'expression' => '1+1', 'result' => '2']);
 
-        $response = $this->deleteJson("/api/calculations/{$calculation->id}", [], [
+        $response = $this->deleteJson("/api/calculations/{$calculation->uuid}", [], [
             'X-Session-Id' => $this->sessionId,
         ]);
 

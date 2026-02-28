@@ -17,15 +17,15 @@ class DestroyCalculationController extends Controller
      *
      * @header X-Session-Id required The UUID identifying the browser session. Example: 550e8400-e29b-41d4-a716-446655440000
      *
-     * @urlParam calculation int required The calculation ID. Example: 1
+     * @urlParam calculation string required The calculation UUID. Example: 550e8400-e29b-41d4-a716-446655440000
      *
      * @response 204 scenario="Success" ""
      * @response 400 scenario="Missing session ID" {"error":"Session ID required"}
-     * @response 404 scenario="Not found" {"message":"No query results for model [App\\Models\\Calculation] 999"}
+     * @response 404 scenario="Not found" {"message":"No query results for model [App\\Models\\Calculation]"}
      */
-    public function __invoke(int $calculation): Response
+    public function __invoke(Calculation $calculation): Response
     {
-        Calculation::findOrFail($calculation)->delete();
+        $calculation->delete();
 
         return response()->noContent();
     }

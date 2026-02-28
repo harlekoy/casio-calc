@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('calculations', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->uuid('session_id')->index();
             $table->text('expression');
             $table->string('result');
