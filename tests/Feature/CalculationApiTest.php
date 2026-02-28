@@ -22,7 +22,7 @@ class CalculationApiTest extends TestCase
             'expression' => '2+3',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['expression' => '2+3', 'result' => '5']);
     }
 
@@ -32,7 +32,7 @@ class CalculationApiTest extends TestCase
             'expression' => '10-4',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '6']);
     }
 
@@ -42,7 +42,7 @@ class CalculationApiTest extends TestCase
             'expression' => '6*7',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '42']);
     }
 
@@ -52,7 +52,7 @@ class CalculationApiTest extends TestCase
             'expression' => '20/4',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '5']);
     }
 
@@ -62,7 +62,7 @@ class CalculationApiTest extends TestCase
             'expression' => '10/3',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201);
+        $response->assertOk();
 
         $result = (float) $response->json('result');
         $this->assertEqualsWithDelta(3.3333333333, $result, 0.0000001);
@@ -74,7 +74,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'sqrt(144)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '12']);
     }
 
@@ -84,7 +84,7 @@ class CalculationApiTest extends TestCase
             'expression' => '2^10',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '1024']);
     }
 
@@ -94,7 +94,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'sin(0)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '0']);
     }
 
@@ -104,7 +104,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'cos(0)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '1']);
     }
 
@@ -114,7 +114,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'tan(0)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '0']);
     }
 
@@ -124,7 +124,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'asin(1)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201);
+        $response->assertOk();
         $result = (float) $response->json('result');
         $this->assertEqualsWithDelta(M_PI / 2, $result, 0.0000001);
     }
@@ -135,7 +135,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'acos(1)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '0']);
     }
 
@@ -145,7 +145,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'atan(0)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '0']);
     }
 
@@ -155,7 +155,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'ln(e)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '1']);
     }
 
@@ -165,7 +165,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'log10(100)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '2']);
     }
 
@@ -175,7 +175,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'exp(0)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '1']);
     }
 
@@ -185,7 +185,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'abs(-42)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '42']);
     }
 
@@ -195,7 +195,7 @@ class CalculationApiTest extends TestCase
             'expression' => '5!',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '120']);
     }
 
@@ -205,7 +205,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'pi',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201);
+        $response->assertOk();
         $result = (float) $response->json('result');
         $this->assertEqualsWithDelta(M_PI, $result, 0.0000001);
     }
@@ -216,7 +216,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'e',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201);
+        $response->assertOk();
         $result = (float) $response->json('result');
         $this->assertEqualsWithDelta(M_E, $result, 0.0000001);
     }
@@ -227,7 +227,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'floor(3.7)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '3']);
     }
 
@@ -237,7 +237,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'ceil(3.2)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '4']);
     }
 
@@ -247,7 +247,7 @@ class CalculationApiTest extends TestCase
             'expression' => '((2+3)*4)',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201)
+        $response->assertOk()
             ->assertJsonFragment(['result' => '20']);
     }
 
@@ -257,7 +257,7 @@ class CalculationApiTest extends TestCase
             'expression' => 'sqrt((((9*9)/12)+(13-4))*2)^2',
         ], ['X-Session-Id' => $this->sessionId]);
 
-        $response->assertStatus(201);
+        $response->assertOk();
         $this->assertNotNull($response->json('result'));
     }
 

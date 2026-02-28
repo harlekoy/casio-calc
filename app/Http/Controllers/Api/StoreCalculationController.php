@@ -25,7 +25,7 @@ class StoreCalculationController extends Controller
      *
      * @bodyParam expression string required The math expression to evaluate. Example: sqrt(144)+5
      *
-     * @response 201 {"id":1,"session_id":"550e8400-e29b-41d4-a716-446655440000","expression":"sqrt(144)+5","result":"17","created_at":"2026-03-01T12:00:00.000000Z","updated_at":"2026-03-01T12:00:00.000000Z"}
+     * @response 200 {"id":1,"session_id":"550e8400-e29b-41d4-a716-446655440000","expression":"sqrt(144)+5","result":"17","created_at":"2026-03-01T12:00:00.000000Z","updated_at":"2026-03-01T12:00:00.000000Z"}
      * @response 400 scenario="Missing session ID" {"error":"Session ID required"}
      * @response 403 scenario="Unauthorized" {"message":"This action is unauthorized."}
      * @response 422 scenario="Invalid expression" {"error":"Invalid expression"}
@@ -54,7 +54,7 @@ class StoreCalculationController extends Controller
                 'result' => $result,
             ]);
 
-            return response()->json($calculation, 201);
+            return response()->json($calculation);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Invalid expression'], 422);
         }
