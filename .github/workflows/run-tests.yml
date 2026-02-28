@@ -52,6 +52,9 @@ jobs:
       - name: Execute lint with Laravel Pint
         run: ./vendor/bin/pint --test
 
+      - name: Generate API documentation
+        run: php artisan scribe:generate
+
       - name: Execute Tests
         run: php artisan test --log-junit=results/junit.xml
 
