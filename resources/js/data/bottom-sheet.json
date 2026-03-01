@@ -1,0 +1,94 @@
+{
+  "tips": [
+    {
+      "icon": "⌨️",
+      "title": "Keyboard Input",
+      "desc": "Type numbers and operators directly. Use Enter to calculate, Backspace to delete, and Escape to clear all.",
+      "keys": ["0-9", "+ - * / .", "Enter", "Backspace", "Esc"]
+    },
+    {
+      "icon": "📋",
+      "title": "Paste Expressions",
+      "desc": "Paste any math expression with Ctrl+V (or Cmd+V on Mac). Supports complex expressions like sqrt((9*9)/12).",
+      "keys": ["Ctrl+V", "Cmd+V"]
+    },
+    {
+      "icon": "🔤",
+      "title": "Type Function Names",
+      "desc": "Type function names directly on your keyboard — sqrt, sin, cos, tan, ln, exp, abs, log10, floor, ceil, pi, and more. Recognized within 700ms.",
+      "keys": ["sqrt", "sin", "cos", "tan", "ln", "exp", "abs", "pi"]
+    },
+    {
+      "icon": "🔬",
+      "title": "Scientific Mode",
+      "desc": "Toggle the SCIENTIFIC bar to access trig, logarithms, exponents, constants, rounding, and more."
+    },
+    {
+      "icon": "📜",
+      "title": "Calculation Tape",
+      "desc": "Press TAPE to view your full calculation history. Delete individual entries or clear all at once."
+    },
+    {
+      "icon": "🌐",
+      "title": "Session per Browser",
+      "desc": "Each browser keeps its own session automatically. Your history stays separate across different browsers."
+    },
+    {
+      "icon": "↩️",
+      "title": "Chain from Result",
+      "desc": "After a calculation, press any operator (+, -, etc.) to continue from the previous result."
+    }
+  ],
+  "cheatsheet": [
+    {
+      "title": "Trigonometry",
+      "color": "text-[#a0cfed]",
+      "items": [
+        { "expr": "sin(pi/2)", "result": "= 1" },
+        { "expr": "cos(pi)", "result": "= -1" },
+        { "expr": "tan(pi/4)", "result": "= 1" },
+        { "expr": "asin(1)", "result": "= 1.5708" }
+      ]
+    },
+    {
+      "title": "Logarithms & Exponentials",
+      "color": "text-[#c8e6c2]",
+      "items": [
+        { "expr": "ln(e)", "result": "= 1" },
+        { "expr": "log10(1000)", "result": "= 3" },
+        { "expr": "exp(2)", "result": "= 7.389" },
+        { "expr": "ln(100)/ln(10)", "result": "= 2" }
+      ]
+    },
+    {
+      "title": "Power & Roots",
+      "color": "text-[#f0d890]",
+      "items": [
+        { "expr": "sqrt(144)", "result": "= 12" },
+        { "expr": "2^8", "result": "= 256" },
+        { "expr": "5!", "result": "= 120" },
+        { "expr": "sqrt(2)^2", "result": "= 2" }
+      ]
+    },
+    {
+      "title": "Rounding & Misc",
+      "color": "text-[#d4c0f0]",
+      "items": [
+        { "expr": "abs(-99.5)", "result": "= 99.5" },
+        { "expr": "floor(9.9)", "result": "= 9" },
+        { "expr": "ceil(0.1)", "result": "= 1" },
+        { "expr": "ceil(pi)*2", "result": "= 8" }
+      ]
+    },
+    {
+      "title": "Combined",
+      "color": "text-casio-gold",
+      "items": [
+        { "expr": "sin(pi/6)+cos(pi/3)", "result": "= 1" },
+        { "expr": "abs(floor(-3.7))", "result": "= 4" },
+        { "expr": "exp(ln(5))+3!", "result": "= 11" },
+        { "expr": "log10(2^10)", "result": "= 3.01" }
+      ]
+    }
+  ]
+}

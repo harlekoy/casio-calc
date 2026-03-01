@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SecurityHeaders
 {
+    /**
+     * Attach security headers to every response to mitigate common web vulnerabilities.
+     */
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);

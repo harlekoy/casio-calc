@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { getSessionId } from './session';
+import axios from 'axios'
+import { getSessionId } from './session'
 
 const api = axios.create({
     baseURL: '/api',
@@ -7,24 +7,24 @@ const api = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
-});
+})
 
 api.interceptors.request.use((config) => {
-    config.headers['X-Session-Id'] = getSessionId();
-    return config;
-});
+    config.headers['X-Session-Id'] = getSessionId()
+    return config
+})
 
 export default {
     getCalculations() {
-        return api.get('/calculations');
+        return api.get('/calculations')
     },
     calculate(expression) {
-        return api.post('/calculations', { expression });
+        return api.post('/calculations', { expression })
     },
     deleteCalculation(id) {
-        return api.delete(`/calculations/${id}`);
+        return api.delete(`/calculations/${id}`)
     },
     clearAll() {
-        return api.delete('/calculations');
+        return api.delete('/calculations')
     },
-};
+}
