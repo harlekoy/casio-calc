@@ -14,6 +14,13 @@ api.interceptors.request.use((config) => {
     return config
 })
 
+api.interceptors.response.use((response) => {
+    if (response.data && Object.hasOwn(response.data, 'data')) {
+        response.data = response.data.data
+    }
+    return response
+})
+
 export default {
     getCalculations() {
         return api.get('/calculations')

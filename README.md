@@ -66,6 +66,16 @@ npm run build
 php artisan serve
 ```
 
+## Linting
+
+```bash
+# Frontend (ESLint)
+npm run lint
+
+# Backend (Laravel Pint)
+./vendor/bin/pint --test
+```
+
 ## Running Tests
 
 ```bash
@@ -102,11 +112,11 @@ All API endpoints require an `X-Session-Id` header (UUID v4) to identify the bro
 ## Tech Stack
 
 - **Backend**: Laravel 12, PHP 8.2
-- **Frontend**: Vue 3, Tailwind CSS 4, Vite 7
+- **Frontend**: Vue 3, Pinia, Tailwind CSS 4, Vite 7
 - **Database**: SQLite
 - **Math Parser**: [mossadal/math-parser](https://github.com/mossadal/math-parser)
 - **API Docs**: Scribe
-- **CI/CD**: GitHub Actions (Pint, PHPUnit, Scribe)
+- **CI/CD**: GitHub Actions (ESLint, Pint, PHPUnit, Scribe)
 
 ## License
 

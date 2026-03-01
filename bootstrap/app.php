@@ -17,6 +17,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'session.id' => \App\Http\Middleware\EnsureSessionId::class,
         ]);
+
+        $middleware->priority([
+            \App\Http\Middleware\EnsureSessionId::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

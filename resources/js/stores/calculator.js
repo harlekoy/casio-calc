@@ -116,6 +116,8 @@ export const useCalculatorStore = defineStore('calculator', () => {
   const debouncedFlush = debounce(flushKeyBuffer, 700)
 
   function handleKeyboard(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return
+
     const key = e.key
 
     const fnKeywords = [
