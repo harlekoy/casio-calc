@@ -15,9 +15,7 @@ api.interceptors.request.use((config) => {
 })
 
 api.interceptors.response.use((response) => {
-    if (response.data && Object.hasOwn(response.data, 'data')) {
-        response.data = response.data.data
-    }
+    response.data = response.data?.data ?? response.data
     return response
 })
 
