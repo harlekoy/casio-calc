@@ -127,8 +127,13 @@ INTRO,
 
         // Any extra authentication-related info for your users. Markdown and HTML are supported.
         'extra_info' => 'Every request must include an `X-Session-Id` header containing a valid UUID v4. '
-            .'This header identifies the browser session and scopes all calculations to that session. '
-            .'Each session only has access to its own calculations — there is no cross-session data leakage. '
+            .'This header is a lightweight guest identifier — it assigns each browser a unique UUID so the API knows which guest user is using the calculator, '
+            .'without requiring login or registration. Each session only has access to its own calculations, preventing cross-session data leakage.'
+            ."\n\n"
+            .'We intentionally avoid using Sanctum, XSRF tokens, or API tokens for this purpose. '
+            .'Those mechanisms are reserved for authenticated users. By keeping guest session tracking separate via `X-Session-Id`, '
+            .'we leave the door open to add proper authentication later (e.g. Sanctum-based login) without conflicting with or reworking the existing session logic.'
+            ."\n\n"
             .'The client generates this UUID once on first visit and persists it in `localStorage`, '
             .'so refreshing the page or reopening the browser will continue where you left off with your full calculation history intact.',
     ],
