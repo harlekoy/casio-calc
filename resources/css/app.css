@@ -1,11 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;700&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source '../**/*.vue';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Exo 2', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Share Tech Mono', ui-monospace, monospace;
+    --font-display: 'Orbitron', ui-monospace, monospace;
+    --color-casio-body: #2c2c2e;
+    --color-casio-bezel: #1e1e20;
+    --color-casio-screen: #8b9d6a;
+    --color-casio-screen-text: #2a3318;
+    --color-casio-gold: #c4a35a;
+    --color-casio-num: #3a3a3c;
+    --color-casio-num-top: #4a4a4c;
+    --color-casio-num-shadow: #222222;
+    --color-casio-op: #4a6741;
+    --color-casio-op-top: #5a7d51;
+    --color-casio-op-shadow: #2e4228;
+    --color-casio-eq: #2e5cb8;
+    --color-casio-eq-top: #4070cc;
+    --color-casio-eq-shadow: #1a3a7a;
+    --color-casio-clear: #8b3a3a;
+    --color-casio-clear-top: #a04848;
+    --color-casio-clear-shadow: #5a2020;
+    --color-casio-del: #5a4a24;
+    --color-casio-del-top: #6e5a2e;
+    --color-casio-del-shadow: #3a3018;
+    --color-casio-fn: #4a4a4c;
+    --color-casio-fn-top: #5a5a5c;
+    --color-casio-fn-shadow: #2a2a2c;
+    --color-casio-tape: #4a3a6a;
+    --color-casio-tape-top: #5c4a7a;
+    --color-casio-tape-shadow: #2a1e3e;
+    --color-tape-bg: #fffff0;
 }
